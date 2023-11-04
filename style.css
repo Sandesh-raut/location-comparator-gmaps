@@ -1,0 +1,109 @@
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        #wrapper {
+            display: flex;
+            height: 100%;
+        }
+
+        #form-section {
+            width: 30%;
+            background-color: #f4f4f4;
+            padding: 10px;
+            overflow-y: auto;
+            transition: transform 0.3s ease-in-out;
+            position: absolute;
+            height: 100%;
+            z-index: 999;
+            top: 0;
+        }
+
+        #map {
+            flex: 1; /* This will allow it to take the remaining space */
+            height: 100%;
+        }
+
+
+        #toggle-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .location-entry {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        #form-content {
+            display: block;
+            width: 100%;
+            height: calc(100% - 40px); /* Subtracting height of toggle button and its margins */
+            overflow-y: auto;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #floating-button {
+            position: absolute;
+            z-index: 1000;
+            top: 20px;
+            left: 20px;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 50%;  /* makes the button round */
+            display: none;  /* initially hidden */
+        }
+        #floating-button:hover {
+            background-color: #0056b3;
+        }
+
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .zoomButton {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .zoomButton:hover {
+            background-color: #0056b3;
+        }
