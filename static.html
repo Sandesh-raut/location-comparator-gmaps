@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <title>Map with Markers</title>
+    <style>
+        html,
+        body,
+        #map {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var map;
+        var locations = [
+            {
+                real: [18.922064, 72.834641],
+                realDescription: "Gateway Of India Mumbai",
+                utility: [18.934052, 72.834231],
+                utilityDescription: "Gateway Of India Mumbai [APPROXIMATE ]"
+            },
+            {
+                real: [28.656473, 77.242943],
+                realDescription: "The Red Fort, Lal Qila, Delhi",
+                utility: [28.636323, 77.204432],
+                utilityDescription: "The Red Fort, Lal Qila, Delhi [APPROXIMATE ]"
+            },
+            {
+                real: [17.361431, 78.474533],
+                realDescription: "Charminar, Hyderabad, Telangana, India",
+                utility: [17.363431, 78.434523],
+                utilityDescription: "Charminar, Hyderabad, Telangana, India[APPROXIMATE ]"
+            },
+            {
+                real: [12.969305, 77.592491],
+                realDescription: "Sree Kanteerava Stadium, Bengaluru, Karnataka, India",
+                utility: [12.967633, 77.605432],
+                utilityDescription: "Sree Kanteerava Stadium, Bengaluru, Karnataka, India"
+            }
+        ];
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: locations[0].real[0], lng: locations[0].real[1] },
+                zoom: 4,
+                mapTypeControl: true,
+                mapTypeId: 'terrain',
+                scaleControl: true,
+                streetViewControl: true,
+                zoomControl: true,
+                rotateControl: true,
+                fullscreenControl: true
+            });
+
+            locations.forEach((location, index) => {
+                createMarker(new google.maps.LatLng(location.real[0], location.real[1]), index + 1, "blue", "Real", location.realDescription);
+                createMarker(new google.maps.LatLng(location.utility[0], location.utility[1]), index + 1, "orange", "Utility", location.utilityDescription);
+            });
+        }
+
+        function createMarker(position, label, color, title, description) {
+            new google.maps.Marker({
+                position: position,
+                map: map,
+                label: {
+                    text: "" + label,
+                    color: "white",
+                    fontSize: "10px"
+                },
+                icon: {
+                    path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW,
+                    fillColor: color,
+                    fillOpacity: 1,
+                    strokeColor: 'white',
+                    strokeWeight: 1,
+                    scale: 5,
+                    labelOrigin: new google.maps.Point(0, -3)
+                }
+            }).addListener('click', function () {
+                var infowindow = new google.maps.InfoWindow({
+                    content: "<div><strong>" + title + ":</strong></div><div><strong>Lat:</strong> " + position.lat() + "</div><div><strong>Lng:</strong> " + position.lng() + "</div><div><strong>Address:</strong> " + description + "</div>"
+                });
+                infowindow.open(map, this);
+            });
+
+            // Draw a 100-meter circle around the marker point
+            new google.maps.Circle({
+                center: position,
+                radius: 100,
+                map: map,
+                fillColor: color,
+                fillOpacity: 0.2,
+                strokeWeight: 0
+            });
+        }
+
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+</body>
+
+</html>
