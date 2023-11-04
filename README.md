@@ -19,6 +19,19 @@ The "Location Comparator for Google Maps" tool is designed to offer an in-depth 
 2. Integrate the script and connect the necessary data attributes in your HTML setup.
 3. Navigate between 'Real' and 'Utility' locations using the provided user-friendly buttons.
 
+## Setting up the API Key for Production
+
+To get the tool up and running in a production environment, you'll need to incorporate your Google Maps API key. You can obtain this key from the [Google Cloud Console](https://console.cloud.google.com/).
+
+Once you have the API key, update the script tag in your HTML as shown:
+
+```html
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap"></script>
+```
+Replace `YOUR_API_KEY_HERE` with your actual API key.
+
+> **Note:** Ensure you've set up the necessary permissions and billing (if applicable) for your API key in the [Google Cloud Console](https://console.cloud.google.com/). Also, for security reasons, restrict the key to be used only by your application's domain.
+
 ## TO-DO
 - **Custom Zoom Controls:** Integrated buttons to effortlessly zoom into any of the displayed locations, providing a detailed view of the area.
 
