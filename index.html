@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Input and Map Display v6</title>
+    <style type="text/css">style.css</style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="form-section">
+        <button id="toggle-button" onclick="toggleForm()">Hide Form</button>
+        
+        <div id="form-content">
+            <div class="location-entry">
+                <label for="circleRadius">Circle Radius (in meters):</label>
+                <input type="number" id="circleRadius" value="100">
+            </div>
+            <div id="locationButtons"></div>
+            <div id="locationForms">
+                <div class="location-entry">
+                    <label for="realLat">Real Latitude:</label>
+                    <input type="text" class="realLat">
+                    <label for="realLng">Real Longitude:</label>
+                    <input type="text" class="realLng">
+                    <label for="realDesc">Real Description:</label>
+                    <input type="text" class="realDesc">
+
+                    <label for="utilLat">Utility Latitude:</label>
+                    <input type="text" class="utilLat">
+                    <label for="utilLng">Utility Longitude:</label>
+                    <input type="text" class="utilLng">
+                    <label for="utilDesc">Utility Description:</label>
+                    <input type="text" class="utilDesc">
+                </div>
+            </div>
+            <button onclick="addLocationForm()">Add Another Location</button>
+            <button onclick="showMap()">Submit</button>
+        </div>  
+    </div>  
+    <div id="map"></div>
+</div>
+<button id="floating-button" onclick="toggleForm()">Show Form</button>
+
+<script src="script.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js"></script>
+</body>
+</html>
